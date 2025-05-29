@@ -17,14 +17,16 @@ public class NinjaModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     private String nome;
 
     //Coluna será única (CPF, RG, Passaporte...)
-    @Column(unique = true)
+    @Column(unique = true, name = "email")
     private String email;
 
+    @Column(name = "idade")
     private int idade;
 
     //Um ninja tem apenas uma missão
