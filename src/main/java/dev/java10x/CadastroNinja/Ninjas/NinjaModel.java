@@ -16,11 +16,13 @@ import java.util.List;
 public class NinjaModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //1 a 1000000...
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nome;
 
+    //Coluna será única (CPF, RG, Passaporte...)
+    @Column(unique = true)
     private String email;
 
     private int idade;
