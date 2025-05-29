@@ -1,3 +1,10 @@
+# Arquivo de variáveis de ambiente
+.env
+
+# Arquivo de persistência do H2
+data/
+
+
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
