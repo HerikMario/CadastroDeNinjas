@@ -2,9 +2,17 @@ package dev.java10x.CadastroNinja.Missoes;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("missoes")
 public class MissaoController {
+
+    private MissaoService missaoService;
+
+    public MissaoController(MissaoService missaoService) {
+        this.missaoService = missaoService;
+    }
 
     @PostMapping("/criar")
     public String criarMissao() {
@@ -12,8 +20,8 @@ public class MissaoController {
     }
 
     @GetMapping("/listar")
-    public String listarMissoes() {
-        return "Missoes listadas";
+    public List<MissaoModel> listarMissoes() {
+        return missaoService.listarMissoes();
     }
 
     @GetMapping("/listarId")
