@@ -3,8 +3,10 @@ package dev.java10x.CadastroNinja.Ninjas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class NinjaService {
@@ -18,33 +20,34 @@ public class NinjaService {
         this.ninjaMapper = ninjaMapper;
     }
 
-    // Adicionar um ninja
     public NinjaDTO criarNinja(NinjaDTO ninjaDTO) {
         NinjaModel ninja = ninjaRepository.save(ninjaMapper.map(ninjaDTO));
         return ninjaMapper.map(ninja);
     }
 
-    // Listar todos os ninjas
-    public List<NinjaModel> listarNinjas() {
-        return ninjaRepository.findAll();
+    public List<NinjaDTO> listarNinjas() {
+        List<NinjaModel> ninjas = ninjaRepository.findAll();
+        List<NinjaDTO> ninjasDTO = new ArrayList<>();
+        for (NinjaModel ninja : ninjas) {
+            ninjasDTO.add(ninjaMapper.map(ninja));
+        }
+        return ninjasDTO;
     }
 
-    // Listar ninja por Id
-    public NinjaModel listarNinjaPorId(Long id) {
+    public NinjaDTO listarNinjaPorId(Long id) {
         Optional<NinjaModel> ninjaPorId = ninjaRepository.findById(id);
-        return ninjaPorId.orElse(null);
+        return ninjaMapper.map(ninjaPorId.orElse(null));
     }
 
-    // Atualizar ninja
-    public NinjaModel alterarNinja(Long id, NinjaModel ninjaAtualizado) {
-        if (ninjaRepository.existsById(id)){
+    public NinjaDTO alterarNinja(Long id, NinjaDTO ninjaAtualizado) {
+        Optional<NinjaModel> ninjaExistente = ninjaRepository.findById(id);
+        if (ninjaExistente.isPresent()) {
             ninjaAtualizado.setId(id);
-            return ninjaRepository.save(ninjaAtualizado);
+            return ninjaMapper.map(ninjaRepository.save(ninjaMapper.map(ninjaAtualizado)));
         }
         return null;
     }
 
-    // Deletar ninja por Id - Tem que ser um VOID
     public void deletarNinja(Long id) {
         ninjaRepository.deleteById(id);
     }
