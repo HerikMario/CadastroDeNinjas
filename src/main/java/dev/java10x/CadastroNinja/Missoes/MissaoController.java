@@ -24,9 +24,9 @@ public class MissaoController {
         return missaoService.listarMissoes();
     }
 
-    @GetMapping("/listarId")
-    public String listarMissaoPorId() {
-        return "Missao listada por id";
+    @GetMapping("/listar/{id}")
+    public MissaoModel listarMissaoPorId(@PathVariable Long id) {
+        return missaoService.listarMissaoPorId(id);
     }
 
     @PutMapping("/alterar")
