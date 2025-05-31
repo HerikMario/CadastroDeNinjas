@@ -32,5 +32,10 @@ public class NinjaService {
         return ninjaPorId.orElse(null);
     }
 
+    // Deletar ninja por Id - Tem que ser um VOID
+    public void deletarNinja(Long id) {
+        ninjaRepository.deleteById(id);
+    }
+
 
 }
