@@ -16,6 +16,11 @@ public class NinjaService {
         this.ninjaRepository = ninjaRepository;
     }
 
+    // Adicionar um ninja
+    public NinjaModel criarNinja(NinjaModel ninja) {
+        return ninjaRepository.save(ninja);
+    }
+
     // Listar todos os ninjas
     public List<NinjaModel> listarNinjas() {
         return ninjaRepository.findAll();
