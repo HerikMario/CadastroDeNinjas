@@ -1,9 +1,17 @@
 package dev.java10x.CadastroNinja.Ninjas;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("ninjas")
 public class NinjaController {
+
+    private NinjaService ninjaService;
+
+    public NinjaController(NinjaService ninjaService) {
+        this.ninjaService = ninjaService;
+    }
 
     // CRUD --> CREATE, READ, UPDATE E DELETE
 
@@ -15,8 +23,8 @@ public class NinjaController {
 
     // Mostrar todos os ninjas (READ)
     @GetMapping("/listar")
-    public String listarNinjas() {
-        return "Ninjas listados";
+    public List<NinjaModel> listarNinjas() {
+        return ninjaService.listarNinjas();
     }
 
     // Procurar ninja por ID (READ)
