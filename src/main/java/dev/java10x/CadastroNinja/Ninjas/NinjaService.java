@@ -1,12 +1,10 @@
 package dev.java10x.CadastroNinja.Ninjas;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class NinjaService {
@@ -36,7 +34,10 @@ public class NinjaService {
 
     public NinjaDTO listarNinjaPorId(Long id) {
         Optional<NinjaModel> ninjaPorId = ninjaRepository.findById(id);
-        return ninjaMapper.map(ninjaPorId.orElse(null));
+        if (ninjaPorId.isPresent()){
+            return ninjaMapper.map(ninjaPorId.get());
+        }
+        return null;
     }
 
     public NinjaDTO alterarNinja(Long id, NinjaDTO ninjaAtualizado) {
@@ -50,6 +51,10 @@ public class NinjaService {
 
     public void deletarNinja(Long id) {
         ninjaRepository.deleteById(id);
+    }
+
+    public boolean existsById(Long id) {
+        return ninjaRepository.existsById(id);
     }
 
 
