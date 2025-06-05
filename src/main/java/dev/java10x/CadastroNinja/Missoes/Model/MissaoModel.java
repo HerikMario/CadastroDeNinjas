@@ -1,4 +1,4 @@
-package dev.java10x.CadastroNinja.Missoes;
+package dev.java10x.CadastroNinja.Missoes.Model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.java10x.CadastroNinja.Ninjas.NinjaModel;
 import jakarta.persistence.*;

@@ -1,6 +1,6 @@
 package dev.java10x.CadastroNinja.Ninjas;
 
-import dev.java10x.CadastroNinja.Missoes.MissaoModel;
+import dev.java10x.CadastroNinja.Missoes.Model.MissaoModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

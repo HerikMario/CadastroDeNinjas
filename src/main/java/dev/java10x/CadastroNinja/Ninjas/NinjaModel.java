@@ -1,12 +1,10 @@
 package dev.java10x.CadastroNinja.Ninjas;
 
-import dev.java10x.CadastroNinja.Missoes.MissaoModel;
+import dev.java10x.CadastroNinja.Missoes.Model.MissaoModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Entity
 @Table(name = "tb_cadastro_de_ninjas")
